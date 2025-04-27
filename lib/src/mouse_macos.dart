@@ -17,18 +17,36 @@ void _moveToMacos(Point<double> position) {
 }
 
 void _clickMacos() {
-  _mouseDownMacos(MouseButton.left);
-  _mouseUpMacos(MouseButton.left);
+  final button = MouseButton.left;
+  _primitiveMouseEventMacos(
+    button.cgEventTypeMouseDown,
+    _primitiveGetPositionMacos(),
+    button.cgMouseButton,
+  );
+  _primitiveMouseEventMacos(
+    button.cgEventTypeMouseUp,
+    _primitiveGetPositionMacos(),
+    button.cgMouseButton,
+  );
 }
 
 void _rightClickMacos() {
-  _mouseDownMacos(MouseButton.right);
-  _mouseUpMacos(MouseButton.right);
+  final button = MouseButton.right;
+  _primitiveMouseEventMacos(
+    button.cgEventTypeMouseDown,
+    _primitiveGetPositionMacos(),
+    button.cgMouseButton,
+  );
+  _primitiveMouseEventMacos(
+    button.cgEventTypeMouseUp,
+    _primitiveGetPositionMacos(),
+    button.cgMouseButton,
+  );
 }
 
 void _mouseDownMacos(MouseButton button) {
   _primitiveMouseEventMacos(
-    cg.CGEventType.kCGEventLeftMouseDown,
+    button.cgEventTypeMouseDown,
     _primitiveGetPositionMacos(),
     button.cgMouseButton,
   );
@@ -36,7 +54,7 @@ void _mouseDownMacos(MouseButton button) {
 
 void _mouseUpMacos(MouseButton button) {
   _primitiveMouseEventMacos(
-    cg.CGEventType.kCGEventLeftMouseUp,
+    button.cgEventTypeMouseUp,
     _primitiveGetPositionMacos(),
     button.cgMouseButton,
   );
@@ -75,6 +93,39 @@ extension _MouseButtonCGMouseButton on MouseButton {
         return cg.CGMouseButton.kCGMouseButtonRight;
       case MouseButton.middle:
         return cg.CGMouseButton.kCGMouseButtonCenter;
+    }
+  }
+
+  cg.CGEventType get cgEventTypeMouseDown {
+    switch (this) {
+      case MouseButton.left:
+        return cg.CGEventType.kCGEventLeftMouseDown;
+      case MouseButton.right:
+        return cg.CGEventType.kCGEventRightMouseDown;
+      case MouseButton.middle:
+        return cg.CGEventType.kCGEventOtherMouseDown;
+    }
+  }
+
+  cg.CGEventType get cgEventTypeMouseUp {
+    switch (this) {
+      case MouseButton.left:
+        return cg.CGEventType.kCGEventLeftMouseUp;
+      case MouseButton.right:
+        return cg.CGEventType.kCGEventRightMouseUp;
+      case MouseButton.middle:
+        return cg.CGEventType.kCGEventOtherMouseUp;
+    }
+  }
+
+  cg.CGEventType get cgEventTypeMouseDragged {
+    switch (this) {
+      case MouseButton.left:
+        return cg.CGEventType.kCGEventLeftMouseDragged;
+      case MouseButton.right:
+        return cg.CGEventType.kCGEventRightMouseDragged;
+      case MouseButton.middle:
+        return cg.CGEventType.kCGEventOtherMouseDragged;
     }
   }
 }
