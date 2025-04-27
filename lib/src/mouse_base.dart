@@ -3,7 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:ffi/ffi.dart';
-import 'package:mouse/src/macos/core_graphics_bindings.dart' as cg;
+import 'package:mouse/src/macos/core_graphics_min_bindings.dart' as cg;
 import 'package:win32/win32.dart';
 
 part 'mouse_macos.dart';

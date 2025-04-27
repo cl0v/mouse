@@ -1,6 +1,6 @@
 name: mouse
 description: Simple mouse control for Dart using FFI, for desktop platforms.
-version: 1.0.0
+version: 1.0.0+1
 repository: https://github.com/kikuchy/mouse
 
 environment:
@@ -13,7 +13,6 @@ platforms:
 # Add regular dependencies here.
 dependencies:
   ffi: ^2.1.3
-  objective_c: ^7.1.0
   win32: ^5.10.1
 
 dev_dependencies:
@@ -29,3 +28,4 @@ ffigen:
   headers:
     entry-points:
       - '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h'
+      
