@@ -14,9 +14,8 @@ This package provides primitive mouse control functionality for desktop platform
 
 Add the package to your `pubspec.yaml`:
 
-```yaml
-dependencies:
-  mouse: ^1.0.0
+```sh
+dart pub add mouse
 ```
 
 ## Usage
@@ -64,7 +63,7 @@ void main() {
 
 This package uses FFI to interact with the native system APIs:
 - Windows: Uses the Win32 API through the `win32` package
-- macOS: Uses CoreGraphics through the `objective_c` package
+- macOS: Uses CoreGraphics
 
 For more information about the implementation details, please refer to the source code in the `lib/src` directory.
 
