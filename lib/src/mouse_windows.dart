@@ -50,7 +50,7 @@ void _mouseDownWindows(MouseButton button) {
   downInput.ref.mi.dx = 0;
   downInput.ref.mi.dy = 0;
   downInput.ref.mi.mouseData = 0;
-  downInput.ref.mi.dwFlags = button.flags;
+  downInput.ref.mi.dwFlags = button.downFlags;
   downInput.ref.mi.time = 0;
   downInput.ref.mi.dwExtraInfo = 0;
 
@@ -68,7 +68,7 @@ void _mouseUpWindows(MouseButton button) {
   upInput.ref.mi.dx = 0;
   upInput.ref.mi.dy = 0;
   upInput.ref.mi.mouseData = 0;
-  upInput.ref.mi.dwFlags = button.flags;
+  upInput.ref.mi.dwFlags = button.upFlags;
   upInput.ref.mi.time = 0;
   upInput.ref.mi.dwExtraInfo = 0;
 
@@ -103,7 +103,7 @@ Never _throwLastError() {
 }
 
 extension _MouseButtonMouseEventFlags on MouseButton {
-  int get flags {
+  int get downFlags {
     switch (this) {
       case MouseButton.left:
         return MOUSE_EVENT_FLAGS.MOUSEEVENTF_LEFTDOWN;
@@ -111,6 +111,17 @@ extension _MouseButtonMouseEventFlags on MouseButton {
         return MOUSE_EVENT_FLAGS.MOUSEEVENTF_RIGHTDOWN;
       case MouseButton.middle:
         return MOUSE_EVENT_FLAGS.MOUSEEVENTF_MIDDLEDOWN;
+    }
+  }
+
+  int get upFlags {
+    switch (this) {
+      case MouseButton.left:
+        return MOUSE_EVENT_FLAGS.MOUSEEVENTF_LEFTUP;
+      case MouseButton.right:
+        return MOUSE_EVENT_FLAGS.MOUSEEVENTF_RIGHTUP;
+      case MouseButton.middle:
+        return MOUSE_EVENT_FLAGS.MOUSEEVENTF_MIDDLEUP;
     }
   }
 }
