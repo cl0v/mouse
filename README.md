@@ -67,3 +67,8 @@ This package uses FFI to interact with the native system APIs:
 - macOS: Uses CoreGraphics through the `objective_c` package
 
 For more information about the implementation details, please refer to the source code in the `lib/src` directory.
+
+## Known issues
+
+- Drag & Drop using mouseDown and mouseUp is not supported on macOS.
+- Linux is not supported.
