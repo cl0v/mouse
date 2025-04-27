@@ -118,14 +118,15 @@ extension _MouseButtonCGMouseButton on MouseButton {
     }
   }
 
-  cg.CGEventType get cgEventTypeMouseDragged {
-    switch (this) {
-      case MouseButton.left:
-        return cg.CGEventType.kCGEventLeftMouseDragged;
-      case MouseButton.right:
-        return cg.CGEventType.kCGEventRightMouseDragged;
-      case MouseButton.middle:
-        return cg.CGEventType.kCGEventOtherMouseDragged;
-    }
-  }
+  // TODO: Implement mouse dragged event
+  // cg.CGEventType get cgEventTypeMouseDragged {
+  //   switch (this) {
+  //     case MouseButton.left:
+  //       return cg.CGEventType.kCGEventLeftMouseDragged;
+  //     case MouseButton.right:
+  //       return cg.CGEventType.kCGEventRightMouseDragged;
+  //     case MouseButton.middle:
+  //       return cg.CGEventType.kCGEventOtherMouseDragged;
+  //   }
+  // }
 }
