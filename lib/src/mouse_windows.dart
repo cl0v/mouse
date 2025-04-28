@@ -3,10 +3,13 @@ part of 'mouse_base.dart';
 Point<double> _getPositionWindows() {
   final lpPoint = calloc<POINT>();
   final result = GetCursorPos(lpPoint);
+  final ret = Point(lpPoint.ref.x.toDouble(), lpPoint.ref.y.toDouble());
+  free(lpPoint);
+
   if (result == 0) {
     _throwLastError();
   }
-  return Point(lpPoint.ref.x.toDouble(), lpPoint.ref.y.toDouble());
+  return ret;
 }
 
 void _moveToWindows(Point<double> position) {
@@ -27,11 +30,11 @@ void _moveToWindows(Point<double> position) {
   moveInput.ref.mi.dwExtraInfo = 0;
 
   final result = SendInput(1, moveInput, sizeOf<INPUT>());
+  free(moveInput);
+
   if (result == 0) {
     _throwLastError();
   }
-
-  free(moveInput);
 }
 
 void _clickWindows() {
@@ -55,11 +58,11 @@ void _mouseDownWindows(MouseButton button) {
   downInput.ref.mi.dwExtraInfo = 0;
 
   final result = SendInput(1, downInput, sizeOf<INPUT>());
+  free(downInput);
+
   if (result == 0) {
     _throwLastError();
   }
-
-  free(downInput);
 }
 
 void _mouseUpWindows(MouseButton button) {
@@ -73,11 +76,11 @@ void _mouseUpWindows(MouseButton button) {
   upInput.ref.mi.dwExtraInfo = 0;
 
   final result = SendInput(1, upInput, sizeOf<INPUT>());
+  free(upInput);
+
   if (result == 0) {
     _throwLastError();
   }
-
-  free(upInput);
 }
 
 Never _throwLastError() {
