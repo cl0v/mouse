@@ -36,7 +36,6 @@ Point<double> _getPositionLinux() {
   if (result != x11Test.True) {
     throw Exception('Mouse cursor not on default window');
   }
-  print("root: ${rootXReturn.value}, ${rootYReturn.value}, win: ${winXReturn.value}, ${winYReturn.value}");
   final ret = Point(rootXReturn.value.toDouble(), rootYReturn.value.toDouble());
 
   free(rootReturn);
