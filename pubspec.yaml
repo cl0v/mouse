@@ -1,6 +1,6 @@
 name: mouse
 description: Simple mouse control for Dart using FFI, for desktop platforms.
-version: 1.0.0+1
+version: 1.0.1
 repository: https://github.com/kikuchy/mouse
 
 environment:
@@ -9,6 +9,7 @@ environment:
 platforms:
   windows:
   macos:
+  linux:
 
 # Add regular dependencies here.
 dependencies:
@@ -19,13 +20,4 @@ dev_dependencies:
   ffigen: ^18.1.0
   lints: ^4.0.0
   test: ^1.24.0
-
-ffigen:
-  name: CoreGraphics
-  description: Bindings for CoreGraphics.
-  language: objc
-  output: 'lib/src/macos/core_graphics_bindings.dart'
-  headers:
-    entry-points:
-      - '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.h'
       

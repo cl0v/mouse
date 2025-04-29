@@ -1,0 +1,6 @@
+name: X11ExtensionXTest
+description: Bindings for X11 Test extension.
+output: 'lib/src/linux/x11_extension_xtest.dart'
+headers:
+  entry-points:
+    - '/usr/include/X11/extensions/XTest.h'
