@@ -1,6 +1,6 @@
 name: mouse
 description: Simple mouse control for Dart using FFI, for desktop platforms.
-version: 1.0.1
+version: 1.0.1+1
 repository: https://github.com/kikuchy/mouse
 
 environment:

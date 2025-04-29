@@ -1,8 +1,6 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// A simple, low-dependency and cross-platform mouse control library for Dart.
+/// 
+/// This package provides primitive mouse control functionality for desktop platforms. It supports both Windows and macOS, allowing you to programmatically control mouse movements and clicks.
 library;
 
 export 'src/mouse_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.

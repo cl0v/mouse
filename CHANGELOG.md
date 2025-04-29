@@ -1,3 +1,7 @@
+## 1.0.1+1
+
+- Fix document.
+
 ## 1.0.1
 - Support Linux (X11 environment only).
 - Fix multiple potential bugs.

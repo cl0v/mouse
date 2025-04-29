@@ -8,7 +8,7 @@ This package provides primitive mouse control functionality for desktop platform
 - Move mouse cursor to specific coordinates
 - Perform left and right clicks
 - Support for different mouse buttons (left, right, middle)
-- Cross-platform support (Windows and macOS)
+- Cross-platform support (Windows, macOS, Linux)
 
 ## Getting started
 
@@ -64,10 +64,11 @@ void main() {
 This package uses FFI to interact with the native system APIs:
 - Windows: Uses the Win32 API through the `win32` package
 - macOS: Uses CoreGraphics
+- Linux: Uses X11 Test Extension
 
 For more information about the implementation details, please refer to the source code in the `lib/src` directory.
 
 ## Known issues
 
 - Drag & Drop using mouseDown and mouseUp is not supported on macOS.
-- Linux is not supported.
+- Wayland environment is not supported on Linux.
