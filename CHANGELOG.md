@@ -1,3 +1,7 @@
+## 1.0.1+2
+
+- Remove debug print.
+
 ## 1.0.1+1
 
 - Fix document.
