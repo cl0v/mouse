@@ -3,11 +3,13 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:ffi/ffi.dart';
+import 'package:mouse/src/linux/x11_extension_xtest_bindings.dart' as x11Test;
 import 'package:mouse/src/macos/core_graphics_min_bindings.dart' as cg;
 import 'package:win32/win32.dart';
 
 part 'mouse_macos.dart';
 part 'mouse_windows.dart';
+part 'mouse_linux.dart';
 
 /// The mouse button to use.
 enum MouseButton {
@@ -28,6 +30,8 @@ Point<double> getPosition() {
       return _getPositionMacos();
     case 'windows':
       return _getPositionWindows();
+    case 'linux':
+      return _getPositionLinux();
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -41,6 +45,8 @@ void moveTo(Point<double> position) {
       _moveToMacos(position);
     case 'windows':
       _moveToWindows(position);
+    case 'linux':
+      _moveToLinux(position);
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -54,6 +60,8 @@ void click() {
       _clickMacos();
     case 'windows':
       _clickWindows();
+    case 'linux':
+      _clickLinux();
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -67,6 +75,8 @@ void rightClick() {
       _rightClickMacos();
     case 'windows':
       _rightClickWindows();
+    case 'linux':
+      _rightClickLinux();
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -80,6 +90,8 @@ void mouseDown(MouseButton button) {
       _mouseDownMacos(button);
     case 'windows':
       _mouseDownWindows(button);
+    case 'linux':
+      _mouseDownLinux(button);
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -93,5 +105,10 @@ void mouseUp(MouseButton button) {
       _mouseUpMacos(button);
     case 'windows':
       _mouseUpWindows(button);
+    case 'linux':
+      _mouseUpLinux(button);
+    default:
+      throw UnsupportedError(
+          'Unsupported platform: ${Platform.operatingSystem}');
   }
 }
