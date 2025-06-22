@@ -83,6 +83,41 @@ void _mouseUpWindows(MouseButton button) {
   }
 }
 
+void _scrollWindows({int deltaX = 0, int deltaY = 0}) {
+  if (deltaY != 0) {
+    final input = calloc<INPUT>();
+    input.ref.type = INPUT_TYPE.INPUT_MOUSE;
+    input.ref.mi.dx = 0;
+    input.ref.mi.dy = 0;
+    input.ref.mi.mouseData = deltaY;
+    input.ref.mi.dwFlags = MOUSE_EVENT_FLAGS.MOUSEEVENTF_WHEEL;
+    input.ref.mi.time = 0;
+    input.ref.mi.dwExtraInfo = 0;
+
+    final result = SendInput(1, input, sizeOf<INPUT>());
+    free(input);
+    if (result == 0) {
+      _throwLastError();
+    }
+  }
+  if (deltaX != 0) {
+    final input = calloc<INPUT>();
+    input.ref.type = INPUT_TYPE.INPUT_MOUSE;
+    input.ref.mi.dx = 0;
+    input.ref.mi.dy = 0;
+    input.ref.mi.mouseData = deltaX;
+    input.ref.mi.dwFlags = MOUSE_EVENT_FLAGS.MOUSEEVENTF_HWHEEL;
+    input.ref.mi.time = 0;
+    input.ref.mi.dwExtraInfo = 0;
+
+    final result = SendInput(1, input, sizeOf<INPUT>());
+    free(input);
+    if (result == 0) {
+      _throwLastError();
+    }
+  }
+}
+
 Never _throwLastError() {
   final errorCode = GetLastError();
   final buffer = calloc.allocate<Utf16>(1024);

@@ -102,6 +102,30 @@ class CoreGraphics {
           'CGEventGetLocation');
   late final _CGEventGetLocation =
       _CGEventGetLocationPtr.asFunction<CGPoint Function(CGEventRef)>();
+
+  CGEventRef CGEventCreateScrollWheelEvent(
+    CGEventSourceRef source,
+    CGScrollEventUnit units,
+    int wheelCount,
+    int wheel1,
+    int wheel2,
+  ) {
+    return _CGEventCreateScrollWheelEvent(
+      source,
+      units.value,
+      wheelCount,
+      wheel1,
+      wheel2,
+    );
+  }
+
+  late final _CGEventCreateScrollWheelEventPtr = _lookup<
+      ffi.NativeFunction<
+          CGEventRef Function(CGEventSourceRef, ffi.Uint32, ffi.Int32, ffi.Int32,
+              ffi.Int32)>>('CGEventCreateScrollWheelEvent');
+  late final _CGEventCreateScrollWheelEvent =
+      _CGEventCreateScrollWheelEventPtr.asFunction<
+          CGEventRef Function(CGEventSourceRef, int, int, int, int)>();
 }
 
 typedef CGDirectDisplayID = ffi.Uint32;
@@ -236,6 +260,20 @@ enum CGEventTapLocation {
         1 => kCGSessionEventTap,
         2 => kCGAnnotatedSessionEventTap,
         _ =>
-          throw ArgumentError('Unknown value for CGEventTapLocation: $value'),
+      throw ArgumentError('Unknown value for CGEventTapLocation: $value'),
+      };
+}
+
+enum CGScrollEventUnit {
+  kCGScrollEventUnitPixel(0),
+  kCGScrollEventUnitLine(1);
+
+  final int value;
+  const CGScrollEventUnit(this.value);
+
+  static CGScrollEventUnit fromValue(int value) => switch (value) {
+        0 => kCGScrollEventUnitPixel,
+        1 => kCGScrollEventUnitLine,
+        _ => throw ArgumentError('Unknown value for CGScrollEventUnit: $value'),
       };
 }

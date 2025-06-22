@@ -108,6 +108,41 @@ void _mouseUpLinux(MouseButton button) {
   libX11Tests.XCloseDisplay(display);
 }
 
+void _scrollLinux({int deltaX = 0, int deltaY = 0}) {
+  final lib = x11Test.X11ExtensionXTest(DynamicLibrary.open(_soPath));
+  final display = lib.XOpenDisplay(nullptr);
+  if (display == nullptr) {
+    throw Exception('Faild to open display');
+  }
+
+  void sendButton(int button) {
+    _primitiveMouseDownLinux(display, button);
+    _primitiveMouseUpLinux(display, button);
+  }
+
+  if (deltaY > 0) {
+    for (var i = 0; i < deltaY; i++) {
+      sendButton(x11Test.Button4);
+    }
+  } else if (deltaY < 0) {
+    for (var i = 0; i < -deltaY; i++) {
+      sendButton(x11Test.Button5);
+    }
+  }
+
+  if (deltaX > 0) {
+    for (var i = 0; i < deltaX; i++) {
+      sendButton(x11Test.Button7);
+    }
+  } else if (deltaX < 0) {
+    for (var i = 0; i < -deltaX; i++) {
+      sendButton(x11Test.Button6);
+    }
+  }
+
+  lib.XCloseDisplay(display);
+}
+
 void _primitiveMouseDownLinux(Pointer<x11Test.Display> display, int button) {
   final libX11Tests = x11Test.X11ExtensionXTest(DynamicLibrary.open(_soPath));
   libX11Tests.XTestFakeButtonEvent(
