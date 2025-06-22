@@ -43,10 +43,13 @@ void moveTo(Point<double> position) {
   switch (Platform.operatingSystem) {
     case 'macos':
       _moveToMacos(position);
+      break;
     case 'windows':
       _moveToWindows(position);
+      break;
     case 'linux':
       _moveToLinux(position);
+      break;
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -58,10 +61,13 @@ void click() {
   switch (Platform.operatingSystem) {
     case 'macos':
       _clickMacos();
+      break;
     case 'windows':
       _clickWindows();
+      break;
     case 'linux':
       _clickLinux();
+      break;
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -73,10 +79,13 @@ void rightClick() {
   switch (Platform.operatingSystem) {
     case 'macos':
       _rightClickMacos();
+      break;
     case 'windows':
       _rightClickWindows();
+      break;
     case 'linux':
       _rightClickLinux();
+      break;
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -88,10 +97,13 @@ void mouseDown(MouseButton button) {
   switch (Platform.operatingSystem) {
     case 'macos':
       _mouseDownMacos(button);
+      break;
     case 'windows':
       _mouseDownWindows(button);
+      break;
     case 'linux':
       _mouseDownLinux(button);
+      break;
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -103,10 +115,13 @@ void mouseUp(MouseButton button) {
   switch (Platform.operatingSystem) {
     case 'macos':
       _mouseUpMacos(button);
+      break;
     case 'windows':
       _mouseUpWindows(button);
+      break;
     case 'linux':
       _mouseUpLinux(button);
+      break;
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
@@ -122,10 +137,13 @@ void scroll({int deltaX = 0, int deltaY = 0}) {
   switch (Platform.operatingSystem) {
     case 'macos':
       _scrollMacos(deltaX: deltaX, deltaY: deltaY);
+      break;
     case 'windows':
       _scrollWindows(deltaX: deltaX, deltaY: deltaY);
+      break;
     case 'linux':
       _scrollLinux(deltaX: deltaX, deltaY: deltaY);
+      break;
     default:
       throw UnsupportedError(
           'Unsupported platform: ${Platform.operatingSystem}');
