@@ -60,6 +60,19 @@ void _mouseUpMacos(MouseButton button) {
   );
 }
 
+void _scrollMacos({int deltaX = 0, int deltaY = 0}) {
+  final lib = cg.CoreGraphics(DynamicLibrary.open(_dylibPath));
+  final event = lib.CGEventCreateScrollWheelEvent(
+    nullptr,
+    cg.CGScrollEventUnit.kCGScrollEventUnitLine,
+    2,
+    deltaY,
+    deltaX,
+  );
+  lib.CGEventPost(cg.CGEventTapLocation.kCGHIDEventTap, event);
+  lib.CFRelease(event as cg.CFTypeRef);
+}
+
 cg.CGPoint _primitiveGetPositionMacos() {
   final lib = cg.CoreGraphics(DynamicLibrary.open(_dylibPath));
   final event = lib.CGEventCreate(nullptr);

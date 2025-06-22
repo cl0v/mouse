@@ -112,3 +112,22 @@ void mouseUp(MouseButton button) {
           'Unsupported platform: ${Platform.operatingSystem}');
   }
 }
+
+/// Scroll the mouse wheel.
+///
+/// [deltaX] specifies horizontal scroll amount. Positive values scroll right
+/// and negative values scroll left. [deltaY] specifies vertical scroll amount.
+/// Positive values scroll up and negative values scroll down.
+void scroll({int deltaX = 0, int deltaY = 0}) {
+  switch (Platform.operatingSystem) {
+    case 'macos':
+      _scrollMacos(deltaX: deltaX, deltaY: deltaY);
+    case 'windows':
+      _scrollWindows(deltaX: deltaX, deltaY: deltaY);
+    case 'linux':
+      _scrollLinux(deltaX: deltaX, deltaY: deltaY);
+    default:
+      throw UnsupportedError(
+          'Unsupported platform: ${Platform.operatingSystem}');
+  }
+}
